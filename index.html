@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>短信业务情报站 | SMS Intelligence Weekly</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #c9a962;
+            --primary-light: rgba(201, 169, 98, 0.1);
+            --primary-glow: rgba(201, 169, 98, 0.15);
+            --bg: #0d1117;
+            --bg-elevated: #161b22;
+            --bg-card: #1c2128;
+            --bg-card-hover: #22272e;
+            --text: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --border: rgba(255,255,255,0.06);
+            --border-highlight: rgba(201, 169, 98, 0.3);
+            --section-policy: #a78bfa;
+            --section-carrier: #67e8f9;
+            --section-cloud: #60a5fa;
+            --section-stock: #4ade80;
+            --section-bid: #fb923c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, #131920 0%, #0d1117 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 48px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201,169,98,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(201,169,98,0.15), rgba(201,169,98,0.05));
+            border: 1px solid rgba(201,169,98,0.25);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--text);
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .issue-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 4px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 16px 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            min-width: 100px;
+        }
+
+        .stat-number {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px;
+        }
+
+        /* Highlight Bar */
+        .highlight-bar {
+            background: linear-gradient(135deg, rgba(201,169,98,0.08), rgba(201,169,98,0.03));
+            border: 1px solid rgba(201,169,98,0.2);
+            border-radius: 12px;
+            padding: 20px 28px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-bar::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .highlight-bar .icon {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        .highlight-bar .text {
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .highlight-bar .text strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .highlight-bar .tag {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: auto;
+            white-space: nowrap;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 28px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .toc-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .toc-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-highlight);
+            color: var(--primary);
+        }
+
+        .toc-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .section-icon.policy { background: rgba(167, 139, 250, 0.12); border: 1px solid rgba(167, 139, 250, 0.2); }
+        .section-icon.carrier { background: rgba(103, 232, 249, 0.08); border: 1px solid rgba(103, 232, 249, 0.2); }
+        .section-icon.cloud { background: rgba(96, 165, 250, 0.1); border: 1px solid rgba(96, 165, 250, 0.2); }
+        .section-icon.stock { background: rgba(74, 222, 128, 0.1); border: 1px solid rgba(74, 222, 128, 0.2); }
+        .section-icon.bid { background: rgba(251, 146, 60, 0.1); border: 1px solid rgba(251, 146, 60, 0.2); }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .section-count {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 16px;
+        }
+
+        .news-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .news-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transform: translateY(-1px);
+        }
+
+        .news-card .card-tag {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .tag-new { background: rgba(248, 113, 113, 0.12); color: #fca5a5; border: 1px solid rgba(248, 113, 113, 0.2); }
+        .tag-important { background: rgba(201, 169, 98, 0.12); color: var(--primary); border: 1px solid rgba(201, 169, 98, 0.2); }
+        .tag-info { background: rgba(96, 165, 250, 0.1); color: #93c5fd; border: 1px solid rgba(96, 165, 250, 0.2); }
+        .tag-result { background: rgba(74, 222, 128, 0.1); color: #86efac; border: 1px solid rgba(74, 222, 128, 0.2); }
+
+        .news-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .news-card h3 a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .news-card h3 a:hover {
+            color: var(--primary);
+        }
+
+        .news-card .summary {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .news-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .news-card .source {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Bid Table */
+        .bid-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .bid-table th {
+            background: var(--bg-elevated);
+            padding: 14px 18px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bid-table td {
+            padding: 14px 18px;
+            font-size: 13px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .bid-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .bid-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .bid-table .status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .status-open { background: rgba(96, 165, 250, 0.12); color: #93c5fd; border: 1px solid rgba(96, 165, 250, 0.2); }
+        .status-closed { background: rgba(74, 222, 128, 0.1); color: #86efac; border: 1px solid rgba(74, 222, 128, 0.2); }
+
+        .bid-table a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .bid-table a:hover {
+            opacity: 0.8;
+        }
+
+        .bid-table td:first-child {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 32px;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-top: 1px solid var(--border);
+            margin-top: 48px;
+        }
+
+        .footer .divider {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 0 auto 16px;
+            border-radius: 1px;
+        }
+
+        .footer p + p {
+            margin-top: 6px;
+        }
+
+        .footer .powered {
+            margin-top: 12px;
+            color: var(--text-muted);
+            opacity: 0.6;
+            font-size: 11px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .header-stats {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .stat-item {
+                min-width: 80px;
+                padding: 12px 16px;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 20px;
+            }
+            .bid-table th, .bid-table td {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-content">
+        <div class="header-top">
+            <div class="logo">
+                <div class="logo-icon">&#x1F4E1;</div>
+                <div class="logo-text">
+                    <h1>短信业务情报站</h1>
+                    <p>SMS Industry Intelligence Weekly</p>
+                </div>
+            </div>
+            <div class="issue-badge">2026年第19期 &nbsp;|&nbsp; 2026.05.01 - 2026.05.07</div>
+        </div>
+        <div class="header-stats">
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">行业政策</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">运营商动态</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">云厂商/SP</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">上市公司</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">招投标</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- 本周重点 -->
+    <div class="highlight-bar">
+        <span class="icon">&#x26A1;</span>
+        <span class="text"><strong>本周焦点：</strong>《通信短信息服务管理规定》修订版5月1日正式施行，商业短信"未经同意不得发送"，罚款上限从3万升至100万。行业合规压力骤增。</span>
+        <span class="tag">重大政策</span>
+    </div>
+
+    <!-- 目录导航 -->
+    <div class="toc">
+        <h3>本期目录</h3>
+        <div class="toc-list">
+            <a href="#policy" class="toc-item"><span class="toc-dot" style="background: var(--section-policy)"></span>行业政策</a>
+            <a href="#carrier" class="toc-item"><span class="toc-dot" style="background: var(--section-carrier)"></span>运营商动态</a>
+            <a href="#cloud" class="toc-item"><span class="toc-dot" style="background: var(--section-cloud)"></span>云厂商 & SP</a>
+            <a href="#stock" class="toc-item"><span class="toc-dot" style="background: var(--section-stock)"></span>上市公司</a>
+            <a href="#bid" class="toc-item"><span class="toc-dot" style="background: var(--section-bid)"></span>招投标信息</a>
+        </div>
+    </div>
+
+    <!-- 行业政策 -->
+    <div class="section" id="policy">
+        <div class="section-header">
+            <div class="section-icon policy">&#x1F4DC;</div>
+            <h2 class="section-title">行业政策与监管</h2>
+            <span class="section-count">3 条</span>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <span class="card-tag tag-important">重大政策</span>
+                <h3><a href="https://www.elawcn.com/rule/2026/0501/1820.html" target="_blank">《通信短信息服务管理规定》修订版正式施行</a></h3>
+                <p class="summary">工信部令第74号修订版自2026年5月1日起施行。核心变化：未经用户明示同意不得发送商业短信；罚款上限从3万提升至100万；短信端口实名溯源进一步强化；用户退订机制需在24小时内生效。</p>
+                <div class="meta">
+                    <span class="source">工信部</span>
+                    <span>2026-05-01 施行</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-new">本周热点</span>
+                <h3><a href="http://china.cnr.cn/gdgg/20260424/t20260424_527598287.shtml" target="_blank">新规落地首周：商业短信治理效果与行业反应</a></h3>
+                <p class="summary">新规实施后，多家SP企业反馈营销短信发送量下降30%-50%。行业专家指出企业需建立用户同意数据库，确保"先授权、后发送"。部分平台已紧急上线用户授权管理模块。</p>
+                <div class="meta">
+                    <span class="source">央广网</span>
+                    <span>2026-04-24</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-info">安全监管</span>
+                <h3><a href="https://www.secrss.com/articles/88725" target="_blank">工信部部署2026年信息通信业安全生产和网络运行安全工作</a></h3>
+                <p class="summary">工信部印发通知，要求加强通信网络安全管理，强化短信业务安全审查机制，打击利用短信通道进行诈骗等违法行为，推动建立短信内容安全联防联控体系。</p>
+                <div class="meta">
+                    <span class="source">安全内参</span>
+                    <span>2026-04</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 运营商动态 -->
+    <div class="section" id="carrier">
+        <div class="section-header">
+            <div class="section-icon carrier">&#x1F4F6;</div>
+            <h2 class="section-title">运营商动态</h2>
+            <span class="section-count">2 条</span>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <span class="card-tag tag-new">大额采购</span>
+                <h3><a href="https://www.163.com/dy/article/KROSAT2L0531M8UK.html" target="_blank">重庆联通 3670 万短信通道服务采购</a></h3>
+                <p class="summary">中国联通重庆分公司发布"2026-2027年全信通本地短信通道服务"采购公告，预算金额约3670万元，覆盖行业短信、验证码短信等全业务场景。</p>
+                <div class="meta">
+                    <span class="source">网易</span>
+                    <span>2026-05-02</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-info">产品调整</span>
+                <h3><a href="https://www.stcn.com/article/detail/3684941.html" target="_blank">中国移动"移动梦网"等经典业务将下线</a></h3>
+                <p class="summary">中国移动公告因产品运营策略调整，和生活、农信通、Mobile Market、12590等承载2G时代移动上网印记的SP相关业务将下线，标志着传统SP合作模式终结。</p>
+                <div class="meta">
+                    <span class="source">证券时报</span>
+                    <span>2026-05-05</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 云厂商 & SP -->
+    <div class="section" id="cloud">
+        <div class="section-header">
+            <div class="section-icon cloud">&#x2601;&#xFE0F;</div>
+            <h2 class="section-title">云厂商 & SP公司</h2>
+            <span class="section-count">3 条</span>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <span class="card-tag tag-info">市场分析</span>
+                <h3><a href="https://www.cnblogs.com/hywx/p/19712081" target="_blank">2026 短信接口平台口碑对比：从低价转向高可用</a></h3>
+                <p class="summary">行业选型趋势变化：反诈升级下更看重毫秒级稳定触达。云厂商（阿里云、腾讯云、华为云）生态完善适合大客户，253、创蓝等独立SP在行业短信和灵活性方面仍有优势。</p>
+                <div class="meta">
+                    <span class="source">博客园</span>
+                    <span>2026-04</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-info">内容安全</span>
+                <h3><a href="https://cloud.tencent.com/developer/article/2663004" target="_blank">2026 年文本内容安全服务选型：腾讯云 vs 阿里云 vs 华为云</a></h3>
+                <p class="summary">新规落地后短信内容审核需求激增。三大云厂商内容安全审核服务深度对比，涉及短信文本检测、违规词库、审核响应速度等维度，企业短信审核合规成刚需。</p>
+                <div class="meta">
+                    <span class="source">腾讯云</span>
+                    <span>2026-04</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-info">技术趋势</span>
+                <h3><a href="https://developer.aliyun.com/article/1720508" target="_blank">阿里云短信服务 2026 全攻略：号码认证与融合通信</a></h3>
+                <p class="summary">阿里云号码认证服务升级，支持一键登录、短信/图形/融合认证，直连运营商实现无感验证。短信+5G消息融合方案成为新方向。</p>
+                <div class="meta">
+                    <span class="source">阿里云开发者</span>
+                    <span>2026-04</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上市公司 -->
+    <div class="section" id="stock">
+        <div class="section-header">
+            <div class="section-icon stock">&#x1F4C8;</div>
+            <h2 class="section-title">短信上市公司资讯</h2>
+            <span class="section-count">2 条</span>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <span class="card-tag tag-result">梦网科技</span>
+                <h3><a href="https://www.montnets.com/wap/index.php/list-3.html" target="_blank">梦网科技亮相 RDMS 2026：5G 阅信解锁零售存量增长</a></h3>
+                <p class="summary">梦网科技（002123.SZ）携5G阅信产品亮相RDMS 2026零售大会，展示基于5G消息的富媒体营销方案。国际通信业务增速明显，出海业务（游戏、视频、跨境电商）成新增长极。</p>
+                <div class="meta">
+                    <span class="source">梦网科技</span>
+                    <span>2026-04-29</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-result">中国软件</span>
+                <h3><a href="https://finance.sina.com.cn/stock/aigc/zab/2026-04-28/doc-inhvzfsn8523227.shtml" target="_blank">中国软件：福建短信平台运维服务确定成交商 金额 17 万</a></h3>
+                <p class="summary">天眼查数据显示，中国软件与技术服务股份有限公司发布福建短信平台运维服务中标候选人公示，成交金额17万元。</p>
+                <div class="meta">
+                    <span class="source">新浪财经</span>
+                    <span>2026-04-28</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 招投标 -->
+    <div class="section" id="bid">
+        <div class="section-header">
+            <div class="section-icon bid">&#x1F4CB;</div>
+            <h2 class="section-title">短信招投标信息</h2>
+            <span class="section-count">8 条</span>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="bid-table">
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>采购单位</th>
+                        <th>预算/金额</th>
+                        <th>状态</th>
+                        <th>链接</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2026年5月-2027年4月短信发送服务</td>
+                        <td>国家税务总局陕西省税务局</td>
+                        <td>-</td>
+                        <td><span class="status status-open">招标中</span></td>
+                        <td><a href="http://chinabidding.org.cn/BidInfoDetails_bid_26163718.html" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>医保信息平台短信服务</td>
+                        <td>天津市医疗保障局</td>
+                        <td>-</td>
+                        <td><span class="status status-open">招标中</span></td>
+                        <td><a href="http://tjgpc.zwfwb.tj.gov.cn/webInfo/getWebInfoByPkWebInfoId1.do?pkWebInfoId=EA4C122D-146E-46AA-ADDF-8174487B1CCB" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>2026年短信通道服务商入围</td>
+                        <td>恒丰银行</td>
+                        <td>-</td>
+                        <td><span class="status status-open">招标中</span></td>
+                        <td><a href="https://hfbank.com.cn/gyhf/cgpt/jzcg/cggg/314553.shtml" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>短信发送通道供应商征集</td>
+                        <td>马上消费金融</td>
+                        <td>-</td>
+                        <td><span class="status status-open">征集中</span></td>
+                        <td><a href="https://www.msxf.com/bidds/1948568852833112064?type=4" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>2026年短信平台服务采购</td>
+                        <td>四川大学</td>
+                        <td>18万元</td>
+                        <td><span class="status status-open">招标中</span></td>
+                        <td><a href="https://info.scu.edu.cn/info/1018/2573.htm" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>2026-2027年全信通本地短信通道服务</td>
+                        <td>中国联通重庆分公司</td>
+                        <td>3670万元</td>
+                        <td><span class="status status-open">招标中</span></td>
+                        <td><a href="https://www.163.com/dy/article/KROSAT2L0531M8UK.html" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>2026年度短信平台服务</td>
+                        <td>广州市道路事务中心</td>
+                        <td>-</td>
+                        <td><span class="status status-closed">已中标</span></td>
+                        <td><a href="https://jtj.gz.gov.cn/gkmlpt/content/10/10698/post_10698093.html" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>通讯短信服务单一来源采购</td>
+                        <td>贵州省能源局</td>
+                        <td>-</td>
+                        <td><span class="status status-closed">已成交</span></td>
+                        <td><a href="https://nyj.guizhou.gov.cn/xwzx/gsgg/202604/t20260424_90042973.html" target="_blank">查看 &rarr;</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div class="divider"></div>
+    <p>短信业务情报站 &nbsp;|&nbsp; 每周一 10:00 自动更新</p>
+    <p style="opacity: 0.6;">覆盖范围：行业政策 / 三大运营商 / 阿里云 & 腾讯云 & 华为云 / 梦网科技 & 中昌数据 / 创蓝 & 253 & 互亿无线 / 招投标</p>
+    <p class="powered">Powered by QoderWork</p>
+</div>
+
+</body>
+</html>
