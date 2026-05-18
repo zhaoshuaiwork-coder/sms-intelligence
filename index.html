@@ -352,6 +352,7 @@
         .tag-important { background: rgba(201, 169, 98, 0.12); color: var(--primary); border: 1px solid rgba(201, 169, 98, 0.2); }
         .tag-info { background: rgba(96, 165, 250, 0.1); color: #93c5fd; border: 1px solid rgba(96, 165, 250, 0.2); }
         .tag-result { background: rgba(74, 222, 128, 0.1); color: #86efac; border: 1px solid rgba(74, 222, 128, 0.2); }
+        .tag-price { background: rgba(251, 146, 60, 0.12); color: #fdba74; border: 1px solid rgba(251, 146, 60, 0.2); }
 
         .news-card h3 {
             font-size: 14px;
@@ -391,6 +392,18 @@
             padding: 2px 8px;
             border-radius: 4px;
             font-weight: 500;
+        }
+
+        /* Empty state */
+        .empty-state {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-style: italic;
         }
 
         /* Bid Table */
@@ -512,6 +525,13 @@
                 padding: 10px 12px;
                 font-size: 12px;
             }
+            .highlight-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .highlight-bar .tag {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -527,15 +547,15 @@
                     <p>SMS Industry Intelligence Weekly</p>
                 </div>
             </div>
-            <div class="issue-badge">2026年第19期 &nbsp;|&nbsp; 2026.05.01 - 2026.05.07</div>
+            <div class="issue-badge">2026年第20期 &nbsp;|&nbsp; 2026.05.12 - 2026.05.18</div>
         </div>
         <div class="header-stats">
             <div class="stat-item">
-                <div class="stat-number">3</div>
+                <div class="stat-number">2</div>
                 <div class="stat-label">行业政策</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">2</div>
+                <div class="stat-number">4</div>
                 <div class="stat-label">运营商动态</div>
             </div>
             <div class="stat-item">
@@ -547,7 +567,7 @@
                 <div class="stat-label">上市公司</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">8</div>
+                <div class="stat-number">3</div>
                 <div class="stat-label">招投标</div>
             </div>
         </div>
@@ -559,8 +579,8 @@
     <!-- 本周重点 -->
     <div class="highlight-bar">
         <span class="icon">&#x26A1;</span>
-        <span class="text"><strong>本周焦点：</strong>《通信短信息服务管理规定》修订版5月1日正式施行，商业短信"未经同意不得发送"，罚款上限从3万升至100万。行业合规压力骤增。</span>
-        <span class="tag">重大政策</span>
+        <span class="text"><strong>本周焦点：</strong>阿里云国内短信服务5月20日正式涨价在即，叠加《通信短信息服务管理规定》修订版施行满半月，短信行业面临成本与合规双重压力，SP企业利润空间进一步收窄。</span>
+        <span class="tag">成本预警</span>
     </div>
 
     <!-- 目录导航 -->
@@ -580,34 +600,25 @@
         <div class="section-header">
             <div class="section-icon policy">&#x1F4DC;</div>
             <h2 class="section-title">行业政策与监管</h2>
-            <span class="section-count">3 条</span>
+            <span class="section-count">2 条</span>
         </div>
         <div class="news-grid">
             <div class="news-card">
-                <span class="card-tag tag-important">重大政策</span>
-                <h3><a href="https://www.elawcn.com/rule/2026/0501/1820.html" target="_blank">《通信短信息服务管理规定》修订版正式施行</a></h3>
-                <p class="summary">工信部令第74号修订版自2026年5月1日起施行。核心变化：未经用户明示同意不得发送商业短信；罚款上限从3万提升至100万；短信端口实名溯源进一步强化；用户退订机制需在24小时内生效。</p>
+                <span class="card-tag tag-important">新规跟踪</span>
+                <h3><a href="https://m.gmw.cn/2026-05/02/content_1304441538.htm" target="_blank">《通信短信息服务管理规定（修订）》施行半月，行业持续消化影响</a></h3>
+                <p class="summary">工信部令第74号修订版自5月1日施行以来进入第三周。核心条款"未经用户明示同意不得发送商业短信"持续发酵，各地通管局已启动执法检查。本周多家媒体跟踪报道新规对营销短信发送量的影响，行业企业加速上线用户授权管理系统。</p>
                 <div class="meta">
-                    <span class="source">工信部</span>
+                    <span class="source">光明网</span>
+                    <span>持续跟踪</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-info">法规资源</span>
+                <h3><a href="https://policy.mofcom.gov.cn/claw/clawContent.shtml?id=105535" target="_blank">《通信短信息服务管理规定》2026修订版全文</a></h3>
+                <p class="summary">商务部政策法规库收录完整修订文本。涵盖短信息服务规范、用户同意机制、端口实名溯源、内容审核及处罚条款等，是SP企业合规自查的核心参考文件。</p>
+                <div class="meta">
+                    <span class="source">商务部</span>
                     <span>2026-05-01 施行</span>
-                </div>
-            </div>
-            <div class="news-card">
-                <span class="card-tag tag-new">本周热点</span>
-                <h3><a href="http://china.cnr.cn/gdgg/20260424/t20260424_527598287.shtml" target="_blank">新规落地首周：商业短信治理效果与行业反应</a></h3>
-                <p class="summary">新规实施后，多家SP企业反馈营销短信发送量下降30%-50%。行业专家指出企业需建立用户同意数据库，确保"先授权、后发送"。部分平台已紧急上线用户授权管理模块。</p>
-                <div class="meta">
-                    <span class="source">央广网</span>
-                    <span>2026-04-24</span>
-                </div>
-            </div>
-            <div class="news-card">
-                <span class="card-tag tag-info">安全监管</span>
-                <h3><a href="https://www.secrss.com/articles/88725" target="_blank">工信部部署2026年信息通信业安全生产和网络运行安全工作</a></h3>
-                <p class="summary">工信部印发通知，要求加强通信网络安全管理，强化短信业务安全审查机制，打击利用短信通道进行诈骗等违法行为，推动建立短信内容安全联防联控体系。</p>
-                <div class="meta">
-                    <span class="source">安全内参</span>
-                    <span>2026-04</span>
                 </div>
             </div>
         </div>
@@ -618,25 +629,43 @@
         <div class="section-header">
             <div class="section-icon carrier">&#x1F4F6;</div>
             <h2 class="section-title">运营商动态</h2>
-            <span class="section-count">2 条</span>
+            <span class="section-count">4 条</span>
         </div>
         <div class="news-grid">
             <div class="news-card">
-                <span class="card-tag tag-new">大额采购</span>
-                <h3><a href="https://www.163.com/dy/article/KROSAT2L0531M8UK.html" target="_blank">重庆联通 3670 万短信通道服务采购</a></h3>
-                <p class="summary">中国联通重庆分公司发布"2026-2027年全信通本地短信通道服务"采购公告，预算金额约3670万元，覆盖行业短信、验证码短信等全业务场景。</p>
+                <span class="card-tag tag-new">业务调整</span>
+                <h3><a href="https://cj.sina.cn/articles/view/7857201856/1d45362c001905jm1c" target="_blank">中国移动发布全国统一业务调整通知，多项新规落地</a></h3>
+                <p class="summary">2026年5月，中国移动面向全网手机用户落地多项业务优化新规，涉及资费套餐结构调整、增值业务管理规范化等方面，对短信增值业务合作模式产生影响。</p>
                 <div class="meta">
-                    <span class="source">网易</span>
-                    <span>2026-05-02</span>
+                    <span class="source">新浪财经</span>
+                    <span>2026-05</span>
                 </div>
             </div>
             <div class="news-card">
-                <span class="card-tag tag-info">产品调整</span>
-                <h3><a href="https://www.stcn.com/article/detail/3684941.html" target="_blank">中国移动"移动梦网"等经典业务将下线</a></h3>
-                <p class="summary">中国移动公告因产品运营策略调整，和生活、农信通、Mobile Market、12590等承载2G时代移动上网印记的SP相关业务将下线，标志着传统SP合作模式终结。</p>
+                <span class="card-tag tag-info">系统维护</span>
+                <h3><a href="https://www.10086.cn/aboutus/news/pannounce/js/index_250_512_detail_55015.html" target="_blank">中国移动5月19日/21日连续两次系统升级</a></h3>
+                <p class="summary">中国移动公告将于5月19日0:00-6:00进行网络调整、5月21日22:00至次日10:00进行业务支撑系统升级。短信业务方在此期间可能受到影响，建议提前做好应急预案。</p>
+                <div class="meta">
+                    <span class="source">中国移动官网</span>
+                    <span>2026-05-19/21</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-important">5G消息</span>
+                <h3><a href="https://www.stcn.com/article/detail/275235.html" target="_blank">5G消息重大进展：华为等巨头通过功能测试</a></h3>
+                <p class="summary">三大运营商联合发布《5G消息白皮书》后，华为等核心设备商已完成5G消息核心功能测试。基础短信业务进入全面升级阶段，富媒体消息商用进程加速，对传统短信业务形成替代压力。</p>
                 <div class="meta">
                     <span class="source">证券时报</span>
-                    <span>2026-05-05</span>
+                    <span>近期</span>
+                </div>
+            </div>
+            <div class="news-card">
+                <span class="card-tag tag-new">管控升级</span>
+                <h3><a href="https://help.aliyun.com/zh/sms/product-overview/announcement-on-china-mobile-requirement-for-sms-template" target="_blank">中国移动新增"引流信息"报备与拦截管控</a></h3>
+                <p class="summary">中国移动新增对"引流信息"类短信的模板报备要求和拦截管控策略。包含引流性质的短信内容需提前报备，未报备的引流类短信将被拦截。短信内容审核力度持续加强。</p>
+                <div class="meta">
+                    <span class="source">阿里云文档</span>
+                    <span>近期</span>
                 </div>
             </div>
         </div>
@@ -651,30 +680,30 @@
         </div>
         <div class="news-grid">
             <div class="news-card">
-                <span class="card-tag tag-info">市场分析</span>
-                <h3><a href="https://www.cnblogs.com/hywx/p/19712081" target="_blank">2026 短信接口平台口碑对比：从低价转向高可用</a></h3>
-                <p class="summary">行业选型趋势变化：反诈升级下更看重毫秒级稳定触达。云厂商（阿里云、腾讯云、华为云）生态完善适合大客户，253、创蓝等独立SP在行业短信和灵活性方面仍有优势。</p>
+                <span class="card-tag tag-price">涨价预警</span>
+                <h3><a href="https://help.aliyun.com/zh/sms/product-overview/notice-on-price-adjustment-for-domestic-sms-services-2604" target="_blank">阿里云5月20日起正式上调国内短信服务价格</a></h3>
+                <p class="summary">受运营商合规监管趋严及综合成本显著上涨影响，阿里云宣布5月20日起对国内短信按量付费和通用套餐包进行价格上调。已购套餐包不受影响，新价格在下一续费周期生效。这是今年云厂商短信服务的首次大幅调价，预计将引发行业连锁反应。</p>
                 <div class="meta">
-                    <span class="source">博客园</span>
-                    <span>2026-04</span>
+                    <span class="source">阿里云官方</span>
+                    <span>2026-05-20 生效</span>
                 </div>
             </div>
             <div class="news-card">
-                <span class="card-tag tag-info">内容安全</span>
-                <h3><a href="https://cloud.tencent.com/developer/article/2663004" target="_blank">2026 年文本内容安全服务选型：腾讯云 vs 阿里云 vs 华为云</a></h3>
-                <p class="summary">新规落地后短信内容审核需求激增。三大云厂商内容安全审核服务深度对比，涉及短信文本检测、违规词库、审核响应速度等维度，企业短信审核合规成刚需。</p>
+                <span class="card-tag tag-info">税务调整</span>
+                <h3><a href="https://cloud.tencent.com/announce/detail/2222" target="_blank">腾讯云短信业务增值税税目调整已执行</a></h3>
+                <p class="summary">根据国家税务政策，自2026年1月1日起短信业务适用增值税税目由"增值电信服务"调整为"基础电信服务"，税率变化对短信业务定价和发票开具产生影响。本周仍有企业客户反馈在对账中遇到相关问题。</p>
                 <div class="meta">
                     <span class="source">腾讯云</span>
-                    <span>2026-04</span>
+                    <span>2026-01-01 生效</span>
                 </div>
             </div>
             <div class="news-card">
-                <span class="card-tag tag-info">技术趋势</span>
-                <h3><a href="https://developer.aliyun.com/article/1720508" target="_blank">阿里云短信服务 2026 全攻略：号码认证与融合通信</a></h3>
-                <p class="summary">阿里云号码认证服务升级，支持一键登录、短信/图形/融合认证，直连运营商实现无感验证。短信+5G消息融合方案成为新方向。</p>
+                <span class="card-tag tag-info">SP行业</span>
+                <h3>SP公司动态</h3>
+                <p class="summary">本周暂无创蓝、253、互亿无线等主要SP公司的重大业务动态更新。在新规施行和阿里云涨价的双重压力下，预计SP企业后续将有通道成本传导和业务策略调整的相关动作。</p>
                 <div class="meta">
-                    <span class="source">阿里云开发者</span>
-                    <span>2026-04</span>
+                    <span class="source">综合</span>
+                    <span>本周暂无更新</span>
                 </div>
             </div>
         </div>
@@ -689,21 +718,21 @@
         </div>
         <div class="news-grid">
             <div class="news-card">
-                <span class="card-tag tag-result">梦网科技</span>
-                <h3><a href="https://www.montnets.com/wap/index.php/list-3.html" target="_blank">梦网科技亮相 RDMS 2026：5G 阅信解锁零售存量增长</a></h3>
-                <p class="summary">梦网科技（002123.SZ）携5G阅信产品亮相RDMS 2026零售大会，展示基于5G消息的富媒体营销方案。国际通信业务增速明显，出海业务（游戏、视频、跨境电商）成新增长极。</p>
+                <span class="card-tag tag-new">一季报</span>
+                <h3><a href="https://finance.eastmoney.com/a/202605013727200896.html" target="_blank">梦网科技(002123) 2026年一季报：营收5.62亿元，净亏4398万元</a></h3>
+                <p class="summary">梦网科技4月28日披露一季报：营业总收入5.62亿元，同比下降22.09%；归母净利润亏损4398.45万元，同比大幅减少1278.24%。主要原因：(1)运营商行业监管政策趋严导致业务量下滑；(2)客户结构调整期毛利承压。经营现金流转负，同比缩水315%。</p>
                 <div class="meta">
-                    <span class="source">梦网科技</span>
-                    <span>2026-04-29</span>
+                    <span class="source">东方财富</span>
+                    <span>2026-04-28 披露</span>
                 </div>
             </div>
             <div class="news-card">
-                <span class="card-tag tag-result">中国软件</span>
-                <h3><a href="https://finance.sina.com.cn/stock/aigc/zab/2026-04-28/doc-inhvzfsn8523227.shtml" target="_blank">中国软件：福建短信平台运维服务确定成交商 金额 17 万</a></h3>
-                <p class="summary">天眼查数据显示，中国软件与技术服务股份有限公司发布福建短信平台运维服务中标候选人公示，成交金额17万元。</p>
+                <span class="card-tag tag-result">年报摘要</span>
+                <h3><a href="http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002123&id=12251533" target="_blank">梦网科技(002123) 发布2025年年度报告摘要</a></h3>
+                <p class="summary">同日发布2025年年报摘要（公告编号：2026-014），披露全年经营情况。在监管趋严和行业竞争加剧的双重压力下，国内云通信业务承压明显。公司正加速国际业务拓展，出海业务（游戏、视频、跨境电商）成为新增长点。</p>
                 <div class="meta">
                     <span class="source">新浪财经</span>
-                    <span>2026-04-28</span>
+                    <span>2026-04-28 披露</span>
                 </div>
             </div>
         </div>
@@ -714,7 +743,7 @@
         <div class="section-header">
             <div class="section-icon bid">&#x1F4CB;</div>
             <h2 class="section-title">短信招投标信息</h2>
-            <span class="section-count">8 条</span>
+            <span class="section-count">3 条</span>
         </div>
         <div style="overflow-x: auto;">
             <table class="bid-table">
@@ -729,60 +758,25 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>2026年5月-2027年4月短信发送服务</td>
-                        <td>国家税务总局陕西省税务局</td>
-                        <td>-</td>
-                        <td><span class="status status-open">招标中</span></td>
-                        <td><a href="http://chinabidding.org.cn/BidInfoDetails_bid_26163718.html" target="_blank">查看 &rarr;</a></td>
+                        <td>短信业务运营支撑服务项目</td>
+                        <td>中国邮政集团有限公司</td>
+                        <td>未公开</td>
+                        <td><span class="status status-open">报名中 (5.11-5.18)</span></td>
+                        <td><a href="https://www.chinapost.com.cn/html1/report/2605/2544-1.htm" target="_blank">查看 &rarr;</a></td>
                     </tr>
                     <tr>
-                        <td>医保信息平台短信服务</td>
-                        <td>天津市医疗保障局</td>
-                        <td>-</td>
-                        <td><span class="status status-open">招标中</span></td>
-                        <td><a href="http://tjgpc.zwfwb.tj.gov.cn/webInfo/getWebInfoByPkWebInfoId1.do?pkWebInfoId=EA4C122D-146E-46AA-ADDF-8174487B1CCB" target="_blank">查看 &rarr;</a></td>
+                        <td>短信平台运维服务项目</td>
+                        <td>广西自治区市场监督管理局</td>
+                        <td>未公开</td>
+                        <td><span class="status status-open">采购中</span></td>
+                        <td><a href="http://scjdglj.gxzf.gov.cn/zwgk/fdzdgk/zfcgxx/t18418603.shtml" target="_blank">查看 &rarr;</a></td>
                     </tr>
                     <tr>
-                        <td>2026年短信通道服务商入围</td>
-                        <td>恒丰银行</td>
-                        <td>-</td>
-                        <td><span class="status status-open">招标中</span></td>
-                        <td><a href="https://hfbank.com.cn/gyhf/cgpt/jzcg/cggg/314553.shtml" target="_blank">查看 &rarr;</a></td>
-                    </tr>
-                    <tr>
-                        <td>短信发送通道供应商征集</td>
-                        <td>马上消费金融</td>
-                        <td>-</td>
-                        <td><span class="status status-open">征集中</span></td>
-                        <td><a href="https://www.msxf.com/bidds/1948568852833112064?type=4" target="_blank">查看 &rarr;</a></td>
-                    </tr>
-                    <tr>
-                        <td>2026年短信平台服务采购</td>
-                        <td>四川大学</td>
-                        <td>18万元</td>
-                        <td><span class="status status-open">招标中</span></td>
-                        <td><a href="https://info.scu.edu.cn/info/1018/2573.htm" target="_blank">查看 &rarr;</a></td>
-                    </tr>
-                    <tr>
-                        <td>2026-2027年全信通本地短信通道服务</td>
-                        <td>中国联通重庆分公司</td>
-                        <td>3670万元</td>
-                        <td><span class="status status-open">招标中</span></td>
-                        <td><a href="https://www.163.com/dy/article/KROSAT2L0531M8UK.html" target="_blank">查看 &rarr;</a></td>
-                    </tr>
-                    <tr>
-                        <td>2026年度短信平台服务</td>
-                        <td>广州市道路事务中心</td>
-                        <td>-</td>
-                        <td><span class="status status-closed">已中标</span></td>
-                        <td><a href="https://jtj.gz.gov.cn/gkmlpt/content/10/10698/post_10698093.html" target="_blank">查看 &rarr;</a></td>
-                    </tr>
-                    <tr>
-                        <td>通讯短信服务单一来源采购</td>
-                        <td>贵州省能源局</td>
-                        <td>-</td>
+                        <td>福建短信平台运维服务</td>
+                        <td>中国软件与技术服务股份有限公司</td>
+                        <td>17万元</td>
                         <td><span class="status status-closed">已成交</span></td>
-                        <td><a href="https://nyj.guizhou.gov.cn/xwzx/gsgg/202604/t20260424_90042973.html" target="_blank">查看 &rarr;</a></td>
+                        <td><a href="https://finance.sina.com.cn/stock/aigc/zab/2026-04-28/doc-inhvzfsn8523069.shtml" target="_blank">查看 &rarr;</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -793,9 +787,9 @@
 
 <div class="footer">
     <div class="divider"></div>
-    <p>短信业务情报站 &nbsp;|&nbsp; 每周一 10:00 自动更新</p>
+    <p>短信业务情报站 &nbsp;|&nbsp; 每周日自动更新</p>
     <p style="opacity: 0.6;">覆盖范围：行业政策 / 三大运营商 / 阿里云 & 腾讯云 & 华为云 / 梦网科技 & 中昌数据 / 创蓝 & 253 & 互亿无线 / 招投标</p>
-    <p class="powered">Powered by QoderWork</p>
+    <p class="powered">Powered by QoderWork &nbsp;|&nbsp; 更新时间：2026-05-18 &nbsp;|&nbsp; 下期预告：2026-05-25</p>
 </div>
 
 </body>
