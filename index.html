@@ -11,11 +11,11 @@
             box-sizing: border-box;
         }
         body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: #e6edf3;
             line-height: 1.7;
-            padding: 0;
+            min-height: 100vh;
         }
         .container {
             max-width: 1200px;
@@ -26,8 +26,8 @@
         .header {
             text-align: center;
             margin-bottom: 48px;
-            padding: 48px 24px;
-            background: linear-gradient(135deg, #161b22 0%, #1c2330 100%);
+            padding: 48px 32px;
+            background: linear-gradient(135deg, #161b22 0%, #1c2333 100%);
             border: 1px solid #30363d;
             border-radius: 16px;
             position: relative;
@@ -43,66 +43,65 @@
             background: linear-gradient(90deg, #c9a962, #e8d48b, #c9a962);
         }
         .header h1 {
-            font-size: 2.4em;
+            font-size: 2.4rem;
+            font-weight: 700;
             color: #c9a962;
             margin-bottom: 8px;
-            font-weight: 700;
             letter-spacing: 2px;
         }
         .header .subtitle {
-            font-size: 1.1em;
+            font-size: 1rem;
             color: #8b949e;
-            margin-bottom: 16px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
         .header .issue-info {
-            display: inline-block;
-            background: rgba(201, 169, 98, 0.1);
-            border: 1px solid rgba(201, 169, 98, 0.3);
-            border-radius: 20px;
-            padding: 6px 20px;
-            font-size: 0.9em;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+        .header .issue-info span {
             color: #c9a962;
+            font-weight: 600;
         }
         /* Highlight Box */
         .highlight-box {
-            background: linear-gradient(135deg, rgba(201, 169, 98, 0.12) 0%, rgba(201, 169, 98, 0.05) 100%);
-            border: 1px solid rgba(201, 169, 98, 0.4);
-            border-left: 4px solid #c9a962;
+            background: linear-gradient(135deg, #2d2208 0%, #1a1505 100%);
+            border: 2px solid #c9a962;
             border-radius: 12px;
-            padding: 24px 28px;
+            padding: 24px 32px;
             margin-bottom: 40px;
             position: relative;
         }
         .highlight-box::before {
-            content: '本周焦点';
+            content: '\1F525 本周焦点';
             position: absolute;
             top: -12px;
-            left: 20px;
+            left: 24px;
             background: #c9a962;
             color: #0d1117;
+            font-size: 0.8rem;
+            font-weight: 700;
             padding: 2px 12px;
             border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 700;
-            letter-spacing: 1px;
         }
         .highlight-box h3 {
             color: #e8d48b;
-            font-size: 1.2em;
+            font-size: 1.2rem;
             margin-bottom: 8px;
             margin-top: 8px;
         }
         .highlight-box p {
             color: #c9d1d9;
-            font-size: 0.95em;
+            font-size: 0.95rem;
         }
         .highlight-box a {
             color: #c9a962;
             text-decoration: none;
-            border-bottom: 1px dashed rgba(201, 169, 98, 0.5);
+            font-size: 0.85rem;
         }
         .highlight-box a:hover {
-            border-bottom-color: #c9a962;
+            text-decoration: underline;
         }
         /* Section */
         .section {
@@ -111,6 +110,7 @@
         .section-title {
             display: flex;
             align-items: center;
+            gap: 12px;
             margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid #21262d;
@@ -122,12 +122,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 14px;
-            font-size: 1.2em;
-            background: rgba(201, 169, 98, 0.15);
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #c9a962 0%, #a68b3c 100%);
         }
         .section-title h2 {
-            font-size: 1.4em;
+            font-size: 1.3rem;
             color: #e6edf3;
             font-weight: 600;
         }
@@ -140,347 +139,326 @@
         .card {
             background: #161b22;
             border: 1px solid #30363d;
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 20px 24px;
-            transition: all 0.2s ease;
-            position: relative;
+            transition: border-color 0.2s, transform 0.2s;
         }
         .card:hover {
-            border-color: rgba(201, 169, 98, 0.4);
+            border-color: #c9a962;
             transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-        .card .card-tag {
-            display: inline-block;
-            background: rgba(201, 169, 98, 0.12);
-            color: #c9a962;
-            font-size: 0.75em;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            font-weight: 500;
+        .card .card-date {
+            font-size: 0.75rem;
+            color: #8b949e;
+            margin-bottom: 8px;
         }
         .card h4 {
+            font-size: 1rem;
             color: #e6edf3;
-            font-size: 1em;
             margin-bottom: 8px;
             font-weight: 600;
-            line-height: 1.5;
+            line-height: 1.4;
         }
         .card p {
+            font-size: 0.88rem;
             color: #8b949e;
-            font-size: 0.88em;
-            line-height: 1.6;
             margin-bottom: 12px;
+            line-height: 1.6;
         }
         .card .card-link {
+            font-size: 0.8rem;
             color: #c9a962;
-            font-size: 0.82em;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            opacity: 0.8;
-            transition: opacity 0.2s;
         }
         .card .card-link:hover {
-            opacity: 1;
-        }
-        .card .card-link::after {
-            content: ' \u2192';
-        }
-        /* Table */
-        .table-wrapper {
-            overflow-x: auto;
-            border-radius: 12px;
-            border: 1px solid #30363d;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #161b22;
-        }
-        thead th {
-            background: #1c2128;
-            color: #c9a962;
-            font-weight: 600;
-            padding: 14px 16px;
-            text-align: left;
-            font-size: 0.85em;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #30363d;
-        }
-        tbody td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #21262d;
-            font-size: 0.88em;
-            color: #c9d1d9;
-        }
-        tbody tr:hover {
-            background: rgba(201, 169, 98, 0.04);
-        }
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
-        .status-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 500;
-        }
-        .status-badge.completed {
-            background: rgba(63, 185, 80, 0.15);
-            color: #3fb950;
-        }
-        .status-badge.ongoing {
-            background: rgba(201, 169, 98, 0.15);
-            color: #c9a962;
-        }
-        .status-badge.upcoming {
-            background: rgba(121, 192, 255, 0.15);
-            color: #79c0ff;
-        }
-        table a {
-            color: #c9a962;
-            text-decoration: none;
-        }
-        table a:hover {
             text-decoration: underline;
         }
-        /* No update notice */
-        .no-update {
-            color: #484f58;
-            font-style: italic;
-            padding: 16px 24px;
+        .card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+        .tag-policy { background: #1f3a2d; color: #56d364; }
+        .tag-operator { background: #1c2d4f; color: #58a6ff; }
+        .tag-cloud { background: #2d1f3a; color: #bc8cff; }
+        .tag-sp { background: #3a2d1f; color: #f0883e; }
+        .tag-stock { background: #3a1f2d; color: #f778ba; }
+        .tag-bid { background: #1f3a3a; color: #56d3d3; }
+        /* Table */
+        .bid-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin-top: 12px;
+        }
+        .bid-table thead {
+            background: #1c2333;
+        }
+        .bid-table th {
+            padding: 12px 16px;
+            text-align: left;
+            color: #c9a962;
+            font-weight: 600;
+            border-bottom: 2px solid #30363d;
+            white-space: nowrap;
+        }
+        .bid-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #21262d;
+            color: #c9d1d9;
+        }
+        .bid-table tr:hover td {
             background: #161b22;
-            border: 1px dashed #30363d;
-            border-radius: 8px;
+        }
+        .bid-table .status-open {
+            color: #56d364;
+            font-weight: 600;
+        }
+        .bid-table .status-result {
+            color: #c9a962;
+            font-weight: 600;
+        }
+        .bid-table a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        .bid-table a:hover {
+            text-decoration: underline;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+        }
+        /* No Update */
+        .no-update {
+            color: #8b949e;
+            font-style: italic;
+            padding: 20px;
             text-align: center;
+            background: #161b22;
+            border-radius: 10px;
+            border: 1px dashed #30363d;
         }
         /* Footer */
         .footer {
             text-align: center;
-            padding: 32px 0;
-            margin-top: 48px;
+            margin-top: 60px;
+            padding-top: 24px;
             border-top: 1px solid #21262d;
-            color: #484f58;
-            font-size: 0.85em;
+            color: #8b949e;
+            font-size: 0.8rem;
         }
-        .footer .brand {
+        .footer a {
             color: #c9a962;
-            font-weight: 600;
+            text-decoration: none;
         }
         /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 16px;
-            }
-            .header {
-                padding: 32px 16px;
-            }
-            .header h1 {
-                font-size: 1.6em;
-            }
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-            table {
-                font-size: 0.82em;
-            }
-            thead th, tbody td {
-                padding: 10px 12px;
-            }
+            .container { padding: 20px 16px; }
+            .header h1 { font-size: 1.6rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .header { padding: 32px 20px; }
+            .bid-table { font-size: 0.8rem; }
+            .bid-table th, .bid-table td { padding: 8px 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
-        <div class="header">
+        <header class="header">
             <h1>短信业务情报站</h1>
             <div class="subtitle">SMS Intelligence Weekly</div>
-            <div class="issue-info">第27期 | 2026年6月30日 - 7月6日</div>
-        </div>
+            <div class="issue-info">
+                <span>2026年第28期</span> &middot; 2026.07.07 &mdash; 2026.07.13
+            </div>
+        </header>
 
-        <!-- Highlight Box -->
+        <!-- Highlight -->
         <div class="highlight-box">
-            <h3>中国移动密集系统升级，7月初短信通道能力优化</h3>
-            <p>中国移动于7月1日、3日、8日连续发布系统升级公告，涉及短信业务系统基础设施维护与能力优化。同期发布7月部分存量套餐资费优化升级公告，涉及套餐外短信资费调整。SP厂商需关注升级窗口期可能的发送影响。</p>
-            <a href="https://www.10086.cn/aboutus/news/pannounce/js/index_250_515_detail_55319.html" target="_blank">查看详情</a>
+            <h3>东风汽车金融短信通道服务项目中标公示 &mdash; 大汉三通击败梦网、创蓝夺标</h3>
+            <p>7月7日，东风汽车金融有限公司短信通道服务项目成交候选人公示：上海大汉三通通信股份有限公司以综合评分91.71分排名第一中标，深圳梦网科技（第三名，137.2万元）、上海创蓝云智（第五名，147.8万元）均参与竞标。该项目反映SP短信市场竞争格局分化加剧。</p>
+            <a href="https://beijing.jianyu360.cn/jybx/20260707_26070667616039.html" target="_blank">查看原文 &rarr;</a>
         </div>
 
-        <!-- 行业政策 Section -->
-        <div class="section">
+        <!-- 行业政策 -->
+        <section class="section">
             <div class="section-title">
-                <div class="icon">📋</div>
+                <div class="icon">&#x1F4CB;</div>
                 <h2>行业政策</h2>
             </div>
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-tag">持续执行</span>
-                    <h4>《通信短信息服务管理规定（修订）》实施满两月，监管持续落地</h4>
-                    <p>自5月1日起实施的新规持续发力，核心要求：商业短信未经同意不得发送、退订"TD"须真实有效、端口短信传输可追溯（保存期不少于6个月）、运营商须提供免费防侵扰服务。行业合规整改进入深水区。</p>
-                    <a href="http://society.people.com.cn/n1/2026/0430/c1008-40711425.html" target="_blank" class="card-link">人民日报解读</a>
+                    <div class="card-date">2026-07 持续执行中</div>
+                    <span class="tag tag-policy">监管</span>
+                    <h4>《通信短信息服务管理规定》修订版持续深化落实</h4>
+                    <p>5月1日施行的新规已运行两个月余，"未经用户同意不得发送商业短信"的核心条款进入严格执法期。各地通管局加大合规检查力度，多家短信服务商反映审核时效延长。</p>
+                    <a class="card-link" href="https://www.moj.gov.cn/pub/sfbgw/flfggz/flfggzbmgz/202605/t20260525_535569.html" target="_blank">查看详情 &rarr;</a>
                 </div>
                 <div class="card">
-                    <span class="card-tag">合规要点</span>
-                    <h4>新规五大核心变化：端口短信管理与用户权益保护强化</h4>
-                    <p>修订版规定在端口短信管理、代理发送身份核验、商业短信发送时段/频次限制、投诉处理机制、监督检查措施五方面做出重大调整。代理发送须同时提供委托方真实身份信息，SP企业需尽快完成合规整改。</p>
-                    <a href="https://news.21csp.com.cn/c3/202604/11429428.html" target="_blank" class="card-link">详细解读</a>
+                    <div class="card-date">2026-04-27 起执行</div>
+                    <span class="tag tag-policy">签名管控</span>
+                    <h4>三大运营商：签名来源不再支持"已上线APP"</h4>
+                    <p>中国电信、移动、联通联合取消"已上线APP"作为短信签名来源的政策已正式执行，未完成变更的签名面临被拦截风险。阿里云已同步更新签名审核规则。</p>
+                    <a class="card-link" href="https://help.aliyun.com/zh/sms/policy-quick-view" target="_blank">查看详情 &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-date">2026-07 执行中</div>
+                    <span class="tag tag-policy">个人信息保护</span>
+                    <h4>公安部2026年个人信息保护专项行动持续推进</h4>
+                    <p>公安部开展的2026年个人信息保护系列专项行动持续进行中，短信营销场景中的号码收集合规性成为重点检查方向，SP企业需确保数据来源合法。</p>
+                    <a class="card-link" href="https://www.cac.gov.cn/2026-04/02/c_1776867645836849.htm" target="_blank">查看详情 &rarr;</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 运营商动态 Section -->
-        <div class="section">
+        <!-- 运营商动态 -->
+        <section class="section">
             <div class="section-title">
-                <div class="icon">📡</div>
+                <div class="icon">&#x1F4E1;</div>
                 <h2>运营商动态</h2>
             </div>
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-tag">中国移动</span>
-                    <h4>7月1日系统升级公告：短信业务系统维护</h4>
-                    <p>中国移动发布7月1日系统升级公告，涉及通信基础设施维护，可能影响部分短信业务通道稳定性。SP厂商需提前做好备用通道切换预案。</p>
-                    <a href="https://www.10086.cn/aboutus/news/pannounce/js/index_250_515_detail_55319.html" target="_blank" class="card-link">查看公告</a>
+                    <div class="card-date">2026-07-02</div>
+                    <span class="tag tag-operator">中国电信</span>
+                    <h4>湖北电信启动2026年短信群发平台维保项目（二次）采购</h4>
+                    <p>中国电信湖北智能云网调度运营中心发布短信群发平台维保项目（二次）询比公告，项目编号I1100000755113502600，当前处于公告阶段。</p>
+                    <a class="card-link" href="https://www.ggzy.gov.cn/information/deal/html/a/0067/0101/20260702/006789eb935082974c06bae5dc47d6b526cb.html" target="_blank">查看详情 &rarr;</a>
                 </div>
                 <div class="card">
-                    <span class="card-tag">中国移动</span>
-                    <h4>7月3日系统升级公告：第二轮基础设施优化</h4>
-                    <p>继7月1日后，中国移动于7月3日再次进行系统升级，连续密集升级可能与5G网络融合及消息能力升级相关。建议关注官方后续通知。</p>
-                    <a href="https://www.10086.cn/aboutus/news/pannounce/js/index_250_515_detail_55320.html" target="_blank" class="card-link">查看公告</a>
+                    <div class="card-date">2026-07 行业观察</div>
+                    <span class="tag tag-operator">5G消息</span>
+                    <h4>5G消息商用进展：运营商加大RCS投入</h4>
+                    <p>三大运营商持续推进5G消息（RCS）商用落地，中国电信表示已为5G消息商用做好全方位准备。行业预期下半年5G消息生态将迎来加速期。</p>
+                    <a class="card-link" href="https://www.chinatelecom.com.cn/ct/news/lddt/153259.html" target="_blank">查看详情 &rarr;</a>
                 </div>
                 <div class="card">
-                    <span class="card-tag">中国移动</span>
-                    <h4>7月部分存量套餐套餐外资费优化升级</h4>
-                    <p>中国移动发布关于2026年7月部分存量套餐的套餐外资费优化升级公告，涉及用户短信资费结构调整，对行业短信定价参考有指导意义。</p>
-                    <a href="https://www.10086.cn/aboutus/news/pannounce/js/index_250_515_detail_55315.html" target="_blank" class="card-link">查看公告</a>
-                </div>
-                <div class="card">
-                    <span class="card-tag">中国移动</span>
-                    <h4>7月8日系统升级预告：第三轮改造</h4>
-                    <p>中国移动已提前发布7月8日系统升级预告。本周连续三次升级安排显示移动正在进行重大系统改造，建议SP合作伙伴持续关注升级窗口。</p>
-                    <a href="https://www.10086.cn/aboutus/news/pannounce/js/index_250_515_detail_55346.html" target="_blank" class="card-link">查看预告</a>
+                    <div class="card-date">持续执行中</div>
+                    <span class="tag tag-operator">中国移动</span>
+                    <h4>移动"引流信息管控"政策对短信模板审核趋严</h4>
+                    <p>中国移动对含引流信息的短信模板管控力度加大，涉及电商导流、APP下载推广等内容的审核通过率进一步降低，华为云已同步发布相关通知。</p>
+                    <a class="card-link" href="https://support.huaweicloud.com/bulletin-msgsms/sms_14_0016.html" target="_blank">查看详情 &rarr;</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 云厂商&SP Section -->
-        <div class="section">
+        <!-- 云厂商&SP -->
+        <section class="section">
             <div class="section-title">
-                <div class="icon">☁️</div>
-                <h2>云厂商 & SP 动态</h2>
+                <div class="icon">&#x2601;</div>
+                <h2>云厂商 &amp; SP</h2>
             </div>
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-tag">阿里云 · 价格</span>
-                    <h4>阿里云国内短信服务价格调整持续生效中</h4>
-                    <p>5月20日起生效的调价方案：中大量用户按量付费涨幅4%-5.6%，套餐包涨幅4.7%-5.1%。验证码/通知短信高量级从0.036涨至0.038元/条，推广短信从0.046涨至0.048元/条。10万条/月以下用户不变。</p>
-                    <a href="https://help.aliyun.com/zh/sms/product-overview/notice-on-price-adjustment-for-domestic-sms-services-2604" target="_blank" class="card-link">价格详情</a>
+                    <div class="card-date">2026-05-20 已生效</div>
+                    <span class="tag tag-cloud">阿里云</span>
+                    <h4>阿里云国内短信服务涨价已生效 &mdash; 中大客户成本上升约5%</h4>
+                    <p>阿里云5月20日正式执行短信价格调整：月用量&gt;10万条的按量付费统一上调0.002元/条（涨幅4%-5.6%），5万条以上套餐包同步调价。月用量&le;10万条客户不受影响。</p>
+                    <a class="card-link" href="https://help.aliyun.com/zh/sms/product-overview/notice-on-price-adjustment-for-domestic-sms-services-2604" target="_blank">查看详情 &rarr;</a>
                 </div>
                 <div class="card">
-                    <span class="card-tag">阿里云 · 国际</span>
-                    <h4>国际短信服务套餐包计费模式调整</h4>
-                    <p>阿里云同步调整国际短信服务套餐包计费模式，出海企业需关注新计费规则对整体短信预算的影响。国际短信成本结构持续变化。</p>
-                    <a href="https://help.aliyun.com/zh/sms/product-overview/announcement-on-product-billing-for-intl-sms-package-update-2603" target="_blank" class="card-link">计费公告</a>
+                    <div class="card-date">服务升级中</div>
+                    <span class="tag tag-cloud">阿里云</span>
+                    <h4>阿里云国际短信服务升级 &mdash; 新增SenderID报备功能</h4>
+                    <p>阿里云国际/港澳台短信服务完成架构升级，新增SenderID在线报备能力，API接口简化为2个核心必填参数，支持通道资源逻辑隔离。存量客户可一键升级。</p>
+                    <a class="card-link" href="https://help.aliyun.com/zh/sms/product-overview/international-sms-service-upgrade" target="_blank">查看详情 &rarr;</a>
                 </div>
                 <div class="card">
-                    <span class="card-tag">华为云</span>
-                    <h4>电信/联通"模板报备"管控持续执行</h4>
-                    <p>中国电信和中国联通新增的短信"模板报备"管控要求持续执行中，华为云已发布相关合规指引。未完成模板报备的用户发送将受限制。</p>
-                    <a href="https://support.huaweicloud.com/bulletin-msgsms/sms_14_0011.html" target="_blank" class="card-link">管控通知</a>
-                </div>
-                <div class="card">
-                    <span class="card-tag">创蓝云智</span>
-                    <h4>创蓝发布2026行业趋势：新规落地+5G消息加速</h4>
-                    <p>创蓝云智发布行业分析，指出2026年短信行业两大主线：新版管理规定落地带来的合规升级，以及5G消息（RCS）商用加速带来的产品形态变革机遇。</p>
-                    <a href="https://doc.chuanglan.com/bbs/article/S1COLNYXARVCYOYY" target="_blank" class="card-link">行业分析</a>
+                    <div class="card-date">2026-07 行业竞争</div>
+                    <span class="tag tag-sp">SP动态</span>
+                    <h4>SP市场竞争格局：大汉三通、创蓝、梦网同台竞技</h4>
+                    <p>从东风金融短信项目竞标可见，头部SP报价从125万到147万不等，价格差异约18%。大汉三通以低价+高分策略胜出，反映SP市场正从规模向性价比竞争转型。</p>
+                    <a class="card-link" href="https://beijing.jianyu360.cn/jybx/20260707_26070667616039.html" target="_blank">查看详情 &rarr;</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 上市公司 Section -->
-        <div class="section">
+        <!-- 上市公司 -->
+        <section class="section">
             <div class="section-title">
-                <div class="icon">📈</div>
+                <div class="icon">&#x1F4C8;</div>
                 <h2>上市公司</h2>
             </div>
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-tag">梦网科技 002123</span>
-                    <h4>梦网科技本周股价承压：跌幅2%-3%</h4>
-                    <p>短信行业龙头梦网科技本周股价在7.86-7.95元区间波动，单日跌幅2.21%-3.32%。市场对短信新规合规成本上升及5G消息商用节奏的预期分歧是近期股价承压主因。</p>
-                    <a href="http://quote.eastmoney.com/sz002123.html" target="_blank" class="card-link">实时行情</a>
+                    <div class="card-date">2026-07 市场表现</div>
+                    <span class="tag tag-stock">梦网科技 002123</span>
+                    <h4>梦网科技股价8.66元 &mdash; 参与东风金融项目竞标排第三</h4>
+                    <p>梦网科技最新股价8.66元（+0.12%），公司旗下深圳市梦网科技发展有限公司以137.2万元报价参与东风汽车金融短信通道服务竞标，综合评分84.38排名第三。2025年报已于4月29日披露。</p>
+                    <a class="card-link" href="http://quote.eastmoney.com/sz002123.html" target="_blank">查看行情 &rarr;</a>
                 </div>
                 <div class="card">
-                    <span class="card-tag">梦网科技 · 年报</span>
-                    <h4>梦网科技2025年年度报告摘要已披露</h4>
-                    <p>梦网云科技集团4月29日发布2025年年度报告摘要，可关注其云通信业务收入构成、5G消息业务进展、客户结构变化及合规投入等核心指标。</p>
-                    <a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225231929.PDF" target="_blank" class="card-link">年报摘要 (PDF)</a>
+                    <div class="card-date">2026-07 市场观察</div>
+                    <span class="tag tag-stock">行业估值</span>
+                    <h4>云通信板块：新规落地后行业格局重塑</h4>
+                    <p>《通信短信息管理规定》修订版施行以来，合规成本上升推动行业洗牌。头部上市公司凭借合规优势获得更多大客户订单，中小SP面临生存压力。</p>
+                    <a class="card-link" href="https://www.cls.cn/detail/891709" target="_blank">查看分析 &rarr;</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 招投标 Section -->
-        <div class="section">
+        <!-- 招投标信息 -->
+        <section class="section">
             <div class="section-title">
-                <div class="icon">📝</div>
+                <div class="icon">&#x1F4DD;</div>
                 <h2>招投标信息</h2>
             </div>
             <div class="table-wrapper">
-                <table>
+                <table class="bid-table">
                     <thead>
                         <tr>
                             <th>项目名称</th>
                             <th>采购单位</th>
                             <th>预算/金额</th>
                             <th>状态</th>
+                            <th>日期</th>
                             <th>链接</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>2026-2028年短信通道服务采购项目</td>
-                            <td>太平财产保险有限公司</td>
-                            <td>30.72万元</td>
-                            <td><span class="status-badge completed">已中标</span></td>
-                            <td><a href="https://www.chengezhao.com/cms/post/2/a/2a0655f47fc9cc86ad0f22eb8e41134d/" target="_blank">查看</a></td>
+                            <td>短信通道服务项目</td>
+                            <td>东风汽车金融有限公司</td>
+                            <td>第一名报价 &lt;125.1万元</td>
+                            <td><span class="status-result">中标公示</span></td>
+                            <td>07-07</td>
+                            <td><a href="https://beijing.jianyu360.cn/jybx/20260707_26070667616039.html" target="_blank">查看</a></td>
                         </tr>
                         <tr>
-                            <td>短信发送通道供应商需求征集</td>
-                            <td>马上消费金融</td>
-                            <td>框架协议</td>
-                            <td><span class="status-badge ongoing">征集中</span></td>
-                            <td><a href="https://www.msxf.com/bidds/1948568852833112064?type=4" target="_blank">查看</a></td>
-                        </tr>
-                        <tr>
-                            <td>2026-2028年短信平台境外短信发送服务采购</td>
-                            <td>中国国际航空股份有限公司</td>
+                            <td>2026年第三方短信服务项目</td>
+                            <td>上海某企业（需登录查看）</td>
                             <td>未公开</td>
-                            <td><span class="status-badge ongoing">谈判中</span></td>
-                            <td><a href="https://pur.airchina.com.cn/001/001001/20260126/87527c01-e87e-4f96-9afc-331c464ab94b.html" target="_blank">查看</a></td>
+                            <td><span class="status-open">公开招标</span></td>
+                            <td>07-08</td>
+                            <td><a href="https://m.chinabidding.cn/zbgg/U-vzfKOJP.html" target="_blank">查看</a></td>
                         </tr>
                         <tr>
-                            <td>云化国际短信拦截系统采购</td>
-                            <td>中国移动</td>
+                            <td>2026年短信群发平台维保项目（二次）</td>
+                            <td>中国电信湖北智能云网调度运营中心</td>
                             <td>未公开</td>
-                            <td><span class="status-badge completed">已中标（中兴通讯）</span></td>
-                            <td><a href="https://m.c114.com.cn/w3542-1290054.html" target="_blank">查看</a></td>
+                            <td><span class="status-open">询比公告</span></td>
+                            <td>07-02</td>
+                            <td><a href="https://www.ggzy.gov.cn/information/deal/html/a/0067/0101/20260702/006789eb935082974c06bae5dc47d6b526cb.html" target="_blank">查看</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div style="margin-top: 16px; padding: 16px 20px; background: #161b22; border: 1px solid #30363d; border-radius: 8px;">
-                <p style="font-size: 0.85em; color: #8b949e;"><strong style="color: #c9a962;">招标关注：</strong>马上消费金融短信通道征集门槛较高——注册资金≥1000万、QPS≥200、金融行业合作案例≥5家（含银行+消金）、月回款≥100万、运营商直连合同≥10份覆盖≥3大区。太平财险项目由深圳旦米科技以30.72万元中标（服务期2年）。</p>
-            </div>
-        </div>
+        </section>
 
         <!-- Footer -->
-        <div class="footer">
-            <p><span class="brand">SMS Intelligence Weekly</span> | 短信业务情报站</p>
-            <p style="margin-top: 8px;">数据来源：工信部、运营商官网、云厂商公告、招投标平台、财经媒体 | 自动生成于 2026-07-06</p>
-        </div>
+        <footer class="footer">
+            <p>短信业务情报站 &middot; SMS Intelligence Weekly &middot; 第28期</p>
+            <p style="margin-top: 8px;">数据来源：公开互联网信息整理 &middot; 仅供内部参考 &middot; 更新日期 2026-07-13</p>
+            <p style="margin-top: 8px;">Powered by <a href="#">SMS Intelligence Bot</a></p>
+        </footer>
     </div>
 </body>
 </html>
